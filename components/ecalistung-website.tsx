@@ -1,7 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Menu, X, BookOpen, Users, Brain, ChevronLeft, ChevronRight, Mail, Phone, MapPin, Instagram } from 'lucide-react'
+import Image from 'next/image';
+
+import { Menu, X, BookOpen, Users, Brain, ChevronLeft, ChevronRight, Phone, MapPin, Instagram } from 'lucide-react'
 
 const Logo = ({ className = "w-10 h-10" }) => (
   <svg
@@ -42,9 +44,10 @@ export function EcalistungWebsite() {
   }
 
   useEffect(() => {
-    const timer = setInterval(nextSlide, 5000)
-    return () => clearInterval(timer)
-  }, [])
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, [nextSlide]); // Tambahkan nextSlide ke dalam array dependensi
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-orange-50">
@@ -88,23 +91,29 @@ export function EcalistungWebsite() {
         </section>
 
         <section id="about" className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">About Us</h2>
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div className="md:w-1/2 mb-8 md:mb-0">
-                <img src="../images/apel.jpeg" alt="Happy children learning" className="rounded-lg shadow-md" />
-              </div>
-              <div className="md:w-1/2 md:pl-8">
-                <p className="text-gray-600 mb-4">
-                  At Ecalistung, we believe that every child has the potential to excel. Our dedicated team of tutors is committed to providing personalized, engaging, and effective learning experiences for preschoolers.
-                </p>
-                <p className="text-gray-600">
-                  We focus on developing essential skills through play-based learning, ensuring that education is not just informative, but also fun and memorable.
-                </p>
-              </div>
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">About Us</h2>
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="md:w-1/2 mb-8 md:mb-0">
+              <Image
+                src="/images/apel.jpeg"
+                alt="Happy children learning"
+                className="rounded-lg shadow-md"
+                width={600} // Update with appropriate width
+                height={400} // Update with appropriate height
+              />
+            </div>
+            <div className="md:w-1/2 md:pl-8">
+              <p className="text-gray-600 mb-4">
+                At Ecalistung, we believe that every child has the potential to excel. Our dedicated team of tutors is committed to providing personalized, engaging, and effective learning experiences for preschoolers.
+              </p>
+              <p className="text-gray-600">
+                We focus on developing essential skills through play-based learning, ensuring that education is not just informative, but also fun and memorable.
+              </p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
         <section id="documentation" className="py-20 bg-gray-100">
           <div className="container mx-auto px-4">
